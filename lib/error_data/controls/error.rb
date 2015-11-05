@@ -46,14 +46,6 @@ class ErrorData
           end
 
           module Second
-            def self.data
-              {
-                'lineNumber' => line_number,
-                'fileName' => filename,
-                'methodName' => method_name
-              }
-            end
-
             def self.line_number
               11
             end
@@ -68,14 +60,6 @@ class ErrorData
           end
 
           module Third
-            def self.data
-              {
-                'lineNumber' => line_number,
-                'fileName' => filename,
-                'methodName' => method_name
-              }
-            end
-
             def self.line_number
               1
             end
