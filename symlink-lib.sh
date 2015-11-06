@@ -1,3 +1,3 @@
 source ./create-library-symlinks.sh
 
-symlink-library 'raygun_client'
+symlink-library 'error_data'
