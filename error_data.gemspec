@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'schema', '~> 0'
   s.add_development_dependency 'casing', '~> 0'
 
-  s.add_development_dependency 'minitest', '~> 0'
+  s.add_development_dependency 'minitest', '~> 1'
   s.add_development_dependency 'minitest-spec-context', '~> 0'
   s.add_development_dependency 'pry', '~> 0'
   s.add_development_dependency 'runner', '~> 0'
