@@ -1,3 +1,3 @@
-source ./create-library-symlinks.sh
+source ./library-symlinks.sh
 
-symlink-library 'error_data'
+symlink_lib 'error_data'
