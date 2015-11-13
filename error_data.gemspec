@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'error_data'
-  s.version = '0.1.3'
+  s.version = '0.1.4'
   s.summary = 'Representation of an error as a data structure'
   s.description = ' '
 
