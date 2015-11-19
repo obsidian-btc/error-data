@@ -5,3 +5,4 @@ require 'casing'
 
 require 'error_data/error_data'
 require 'error_data/serialize'
+require 'error_data/import'
