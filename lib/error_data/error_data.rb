@@ -31,13 +31,7 @@ class ErrorData
     error_corresponds = class_name == error.class.name &&
       message == error.message
 
-    stack_trace_corresponds = true
-    stack_trace.each_with_index do |stack_frame, i|
-      unless stack_frame.correspond?(error.backtrace[i])
-        stack_trace_corresponds = false
-        break
-      end
-    end
+    stack_trace_corresponds = backtrace == error.backtrace
 
     error_corresponds && stack_trace_corresponds
   end
