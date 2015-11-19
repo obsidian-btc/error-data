@@ -16,7 +16,13 @@ class ErrorData
     end
 
     def call
-      ErrorData.new
+      error_data = ErrorData.build
+
+      error_data.class_name = error.class.name
+      error_data.message = error.message
+      error_data.set_backtrace(error.backtrace)
+
+      error_data
     end
   end
 end
