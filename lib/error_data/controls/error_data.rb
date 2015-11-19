@@ -21,12 +21,12 @@ class ErrorData
         third_line.filename = Controls::Error::Backtrace::Lines::Third.filename
         third_line.method_name = Controls::Error::Backtrace::Lines::Third.method_name
 
-        stack_frames = []
-        stack_frames << first_line
-        stack_frames << second_line
-        stack_frames << third_line
+        lines = []
+        lines << first_line
+        lines << second_line
+        lines << third_line
 
-        error_data.stack_trace = stack_frames
+        error_data.backtrace = lines
 
         error_data
       end

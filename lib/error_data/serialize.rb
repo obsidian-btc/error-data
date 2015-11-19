@@ -24,16 +24,16 @@ class ErrorData
       data[:class_name] = error_data.class_name
       data[:message] = error_data.message
 
-      stack_trace = []
-      error_data.stack_trace.each do |stack_frame|
-        frame = {}
-        frame[:line_number] = stack_frame.line_number
-        frame[:file_name] = stack_frame.filename
-        frame[:method_name] = stack_frame.method_name
-        stack_trace << frame
+      backtrace = []
+      error_data.backtrace.each do |line|
+        line_info = {}
+        line_info[:line_number] = line.line_number
+        line_info[:file_name] = line.filename
+        line_info[:method_name] = line.method_name
+        backtrace << line_info
       end
 
-      data[:stack_trace] = stack_trace
+      data[:stack_trace] = backtrace
 
       json_data = Casing::Camel.(data)
 
