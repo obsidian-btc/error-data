@@ -27,10 +27,14 @@ class ErrorData
         end
 
         module Frames
-          module First
-            def self.text
+          module Text
+            def text
               "#{filename}:#{line_number}:in `#{method_name}'"
             end
+          end
+
+          module First
+            extend Text
 
             def self.line_number
               111
@@ -46,6 +50,8 @@ class ErrorData
           end
 
           module Second
+            extend Text
+
             def self.line_number
               11
             end
@@ -60,6 +66,8 @@ class ErrorData
           end
 
           module Third
+            extend Text
+
             def self.line_number
               1
             end
