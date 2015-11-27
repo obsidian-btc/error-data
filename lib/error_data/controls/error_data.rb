@@ -40,7 +40,7 @@ class ErrorData
           {
             'className' => Controls::Error.class_name,
             'message' => Controls::Error.message,
-            'stackTrace' => Backtrace.data
+            'backtrace' => Backtrace.data
           }
         end
 
@@ -57,8 +57,8 @@ class ErrorData
             module First
               def self.data
                 {
+                  'filename' => Controls::Error::Backtrace::Lines::First.filename,
                   'lineNumber' => Controls::Error::Backtrace::Lines::First.line_number,
-                  'fileName' => Controls::Error::Backtrace::Lines::First.filename,
                   'methodName' => Controls::Error::Backtrace::Lines::First.method_name
                 }
               end
@@ -67,8 +67,8 @@ class ErrorData
             module Second
               def self.data
                 {
+                  'filename' => Controls::Error::Backtrace::Lines::Second.filename,
                   'lineNumber' => Controls::Error::Backtrace::Lines::Second.line_number,
-                  'fileName' => Controls::Error::Backtrace::Lines::Second.filename,
                   'methodName' => Controls::Error::Backtrace::Lines::Second.method_name
                 }
               end
@@ -77,8 +77,8 @@ class ErrorData
             module Third
               def self.data
                 {
+                  'filename' => Controls::Error::Backtrace::Lines::Third.filename,
                   'lineNumber' => Controls::Error::Backtrace::Lines::Third.line_number,
-                  'fileName' => Controls::Error::Backtrace::Lines::Third.filename,
                   'methodName' => Controls::Error::Backtrace::Lines::Third.method_name
                 }
               end

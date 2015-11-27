@@ -17,4 +17,22 @@ class ErrorData
 
     error_corresponds && backtrace_corresponds
   end
+
+  module Serializer
+    def self.json
+      JSON
+    end
+
+    module JSON
+      def self.write(error_data)
+        ErrorData::Serialize::Write.(error_data)
+      end
+
+      def self.raw_data(error_data)
+        ErrorData::Serialize::Write.raw_data(error_data)
+      end
+
+
+    end
+  end
 end
