@@ -4,9 +4,9 @@ class ErrorData
       def self.call(error_data)
         raw_data = raw_data(error_data)
 
-        json_formatted_data = Casing::Camel.(raw_data)
+        formatted_data = formatted_data(raw_data)
 
-        json_text = JSON.generate(json_formatted_data)
+        json_text = JSON.generate(formatted_data)
 
         json_text
       end
@@ -24,6 +24,10 @@ class ErrorData
         raw_data[:backtrace] = backtrace
 
         raw_data
+      end
+
+      def self.formatted_data(raw_data)
+        Casing::Camel.(raw_data)
       end
     end
   end
