@@ -28,11 +28,9 @@ class ErrorData
         ErrorData::Serialize::Write.(error_data)
       end
 
-      def self.raw_data(error_data)
-        ErrorData::Serialize::Write.raw_data(error_data)
+      def self.read(text)
+        ErrorData::Serialize::Read.(text)
       end
-
-
     end
   end
 end
