@@ -1,14 +1,28 @@
 class ErrorData
   module Serialize
-    module Write
-      def self.call(error_data)
-        raw_data = raw_data(error_data)
+    module Read
+      def self.call(text)
+        formatted_data = formatted_data(text)
 
-        formatted_data = formatted_data(raw_data)
+        raw_data = raw_data(formatted_data)
 
-        json_text = JSON.generate(formatted_data)
+        build_error_data(raw_data)
+      end
 
-        json_text
+      def self.formatted_data(text)
+        JSON.parse(text)
+      end
+
+      def self.raw_data(formatted_data)
+        Casing::Underscore.(formatted_data)
+      end
+
+      def self.build_error_data(raw_data)
+        error_data = ErrorData.build(raw_data)
+
+        error_data.backtrace = Backtrace.build(raw_data['backtrace'])
+
+        error_data
       end
     end
   end
