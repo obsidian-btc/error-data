@@ -33,12 +33,20 @@ class ErrorData
     end
 
     module JSON
-      def self.write(error_data)
-        ErrorData::Serialize::Write.(error_data)
+      module Write
+        def self.call(error_data)
+          ErrorData::Serialize::Write.(error_data)
+        end
+
+        def self.raw_data(error_data)
+          ErrorData::Serialize::Write.raw_data(error_data)
+        end
       end
 
-      def self.read(text)
-        ErrorData::Serialize::Read.(text)
+      module Read
+        def self.call(text)
+          ErrorData::Serialize::Read.(text)
+        end
       end
     end
   end
