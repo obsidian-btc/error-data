@@ -47,6 +47,10 @@ class ErrorData
         def self.call(text)
           ErrorData::Serialize::Read.(text)
         end
+
+        def self.raw_data(formatted_data)
+          raw_data = ErrorData::Serialize::Read.raw_data(formatted_data)
+        end
       end
     end
   end
