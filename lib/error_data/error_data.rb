@@ -49,7 +49,7 @@ class ErrorData
         end
 
         def self.raw_data(formatted_data)
-          raw_data = ErrorData::Serialize::Read.raw_data(formatted_data)
+          ErrorData::Serialize::Read.raw_data(formatted_data)
         end
       end
     end
