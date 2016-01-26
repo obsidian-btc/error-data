@@ -1,7 +1,7 @@
 require_relative 'spec_init'
 
-describe "Error Data Equality" do
-  specify do
+context "Error Data Equality" do
+  test do
     error_data_1 = ErrorData::Controls::ErrorData.example
     error_data_2 = ErrorData::Controls::ErrorData.example
 
