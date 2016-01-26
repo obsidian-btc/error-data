@@ -1,7 +1,7 @@
 require_relative 'spec_init'
 
-describe "Error Data Serialization" do
-  specify "Converts to JSON text" do
+context "Error Data Serialization" do
+  test "Converts to JSON text" do
     compare_json_text = ErrorData::Controls::ErrorData::JSON.text
 
     error_data = ErrorData::Controls::ErrorData.example
