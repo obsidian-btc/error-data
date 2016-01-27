@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'error_data'
-  s.version = '0.1.9'
+  s.version = '0.0.1.9'
   s.summary = 'Representation of an error as a data structure'
   s.description = ' '
 
@@ -19,7 +19,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'casing'
 
   s.add_development_dependency 'serialize'
-
   s.add_development_dependency 'test_bench'
-  s.add_development_dependency 'pry'
 end
