@@ -8,6 +8,8 @@ context "Error Data Deserialization" do
 
     error_data = Serialize::Read.(json_text, compare_error_data.class, :json)
 
+    __logger.data "ErrorData Serialize::Read: #{error_data.inspect}"
+
     assert(error_data == compare_error_data)
   end
 end
