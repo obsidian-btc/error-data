@@ -1,5 +1,5 @@
 class ErrorData
-  class Backtrace < Array
+  class Backtrace
     class Line
       include Schema::DataStructure
 

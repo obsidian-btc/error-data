@@ -5,6 +5,10 @@ class ErrorData
   attribute :message, String
   attribute :backtrace, Backtrace
 
+  def backtrace
+    @backtrace ||= Backtrace.new
+  end
+
   def set_backtrace(backtrace)
     self.backtrace = Backtrace.parse(backtrace)
   end
@@ -13,7 +17,7 @@ class ErrorData
     error_corresponds = class_name == error.class.name &&
       message == error.message
 
-    backtrace_corresponds = backtrace.to_a == error.backtrace
+    backtrace_corresponds = backtrace.string_frames == error.backtrace
 
     error_corresponds && backtrace_corresponds
   end
@@ -34,6 +38,12 @@ class ErrorData
 
     def self.read(raw_data)
       ErrorData.build(raw_data)
+    end
+
+    def self.write(instance)
+      data = instance.to_h
+      data[:backtrace] = instance.backtrace.to_a
+      data
     end
 
     module JSON
