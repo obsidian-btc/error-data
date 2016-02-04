@@ -32,6 +32,10 @@ class ErrorData
       JSON
     end
 
+    def self.read(raw_data)
+      ErrorData.build(raw_data)
+    end
+
     module JSON
       module Write
         def self.call(error_data)
