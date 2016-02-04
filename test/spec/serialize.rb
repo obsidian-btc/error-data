@@ -7,6 +7,8 @@ context "Error Data Serialization" do
     error_data = ErrorData::Controls::ErrorData.example
     json_text = Serialize::Write.(error_data, :json)
 
+    __logger.data "ErrorData Serialize::Write: #{json_text}"
+
     assert(json_text == compare_json_text)
   end
 end
