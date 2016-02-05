@@ -1,1 +1,1 @@
-require_relative './test/spec.rb'
+require_relative './test/bench.rb'

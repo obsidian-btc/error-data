@@ -1,4 +1,4 @@
-require_relative 'spec_init'
+require_relative 'bench_init'
 
 test "Convert Error to ErrorData" do
   error = ErrorData::Controls::Error.example
