@@ -28,6 +28,35 @@ class ErrorData
         error_data
       end
 
+      def self.data
+        data = {}
+
+        data[:class_name] = Controls::Error.class_name
+        data[:message] = Controls::Error.message
+
+        backtrace = [
+          {
+            :line_number => Controls::Error::Backtrace::Lines::First.line_number,
+            :filename => Controls::Error::Backtrace::Lines::First.filename,
+            :method_name => Controls::Error::Backtrace::Lines::First.method_name
+          },
+          {
+            :line_number => Controls::Error::Backtrace::Lines::Second.line_number,
+            :filename => Controls::Error::Backtrace::Lines::Second.filename,
+            :method_name => Controls::Error::Backtrace::Lines::Second.method_name
+          },
+          {
+            :line_number => Controls::Error::Backtrace::Lines::Third.line_number,
+            :filename => Controls::Error::Backtrace::Lines::Third.filename,
+            :method_name => Controls::Error::Backtrace::Lines::Third.method_name
+          }
+        ]
+
+        data[:backtrace] = backtrace
+
+        data
+      end
+
       module JSON
         def self.text
           ::JSON.generate(data)

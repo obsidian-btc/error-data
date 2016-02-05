@@ -1,9 +1,7 @@
 require_relative 'spec_init'
 
-context "Create Error Data from Error" do
-  test "Converts to JSON text" do
-    error = ErrorData::Controls::Error.example
-    error_data = ErrorData::Import.(error)
-    error_data.correspond? error
-  end
+test "Convert Error to ErrorData" do
+  error = ErrorData::Controls::Error.example
+  error_data = ErrorData::Import.(error)
+  error_data.correspond? error
 end

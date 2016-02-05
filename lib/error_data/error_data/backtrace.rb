@@ -1,5 +1,7 @@
 class ErrorData
-  class Backtrace < Array
+  class Backtrace
+    include Schema::DataStructure
+
     def lines
       @lines ||= []
     end
@@ -14,6 +16,7 @@ class ErrorData
 
     def add_line(line)
       lines << line
+      self
     end
     alias :<< :add_line
 
@@ -21,9 +24,15 @@ class ErrorData
       lines.each &blk
     end
 
-    def to_a
+    def string_frames
       lines.map do |line|
         line.to_s
+      end
+    end
+
+    def to_a
+      lines.map do |line|
+        line.to_h
       end
     end
 
