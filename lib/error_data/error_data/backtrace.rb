@@ -2,45 +2,45 @@ class ErrorData
   class Backtrace
     include Schema::DataStructure
 
-    def lines
-      @lines ||= []
+    def frames
+      @frames ||= []
     end
 
     def self.build(data)
       new.tap do |instance|
-        data.each do |line|
-          instance.lines << Line.build(line)
+        data.each do |frame|
+          instance.frames << Frame.build(frame)
         end
       end
     end
 
-    def add_line(line)
-      lines << line
+    def add_frame(frame)
+      frames << frame
       self
     end
-    alias :<< :add_line
+    alias :<< :add_frame
 
     def each(&blk)
-      lines.each &blk
+      frames.each &blk
     end
 
-    def string_frames
-      lines.map do |line|
-        line.to_s
+    def text_frames
+      frames.map do |frame|
+        frame.to_s
       end
     end
 
     def to_a
-      lines.map do |line|
-        line.to_h
+      frames.map do |frame|
+        frame.to_h
       end
     end
 
     def self.parse(backtrace)
       instance = new
 
-      backtrace.each do |line|
-        instance.add_line(Line.parse(line))
+      backtrace.each do |frame|
+        instance.add_frame(Frame.parse(frame))
       end
 
       instance

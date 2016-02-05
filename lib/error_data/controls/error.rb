@@ -20,13 +20,13 @@ class ErrorData
       module Backtrace
         def self.example
           [
-            Lines::First.text,
-            Lines::Second.text,
-            Lines::Third.text
+            Frames::First.text,
+            Frames::Second.text,
+            Frames::Third.text
           ]
         end
 
-        module Lines
+        module Frames
           module Text
             def text
               "#{filename}:#{line_number}:in `#{method_name}'"
