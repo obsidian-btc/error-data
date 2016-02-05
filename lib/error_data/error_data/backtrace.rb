@@ -6,7 +6,8 @@ class ErrorData
       @frames ||= []
     end
 
-    def self.build(data)
+    def self.build(data=nil)
+      data ||= {}
       new.tap do |instance|
         data.each do |frame|
           instance.frames << Frame.build(frame)

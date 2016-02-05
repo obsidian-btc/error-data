@@ -6,26 +6,51 @@ class ErrorData
         error_data.class_name = Controls::Error.class_name
         error_data.message = Controls::Error.message
 
-        first_frame = ::ErrorData::Backtrace::Frame.new
-        first_frame.line_number = Controls::Error::Backtrace::Frames::First.line_number
-        first_frame.filename = Controls::Error::Backtrace::Frames::First.filename
-        first_frame.method_name = Controls::Error::Backtrace::Frames::First.method_name
-
-        second_frame = ::ErrorData::Backtrace::Frame.new
-        second_frame.line_number = Controls::Error::Backtrace::Frames::Second.line_number
-        second_frame.filename = Controls::Error::Backtrace::Frames::Second.filename
-        second_frame.method_name = Controls::Error::Backtrace::Frames::Second.method_name
-
-        third_frame = ::ErrorData::Backtrace::Frame.new
-        third_frame.line_number = Controls::Error::Backtrace::Frames::Third.line_number
-        third_frame.filename = Controls::Error::Backtrace::Frames::Third.filename
-        third_frame.method_name = Controls::Error::Backtrace::Frames::Third.method_name
-
-        error_data.backtrace << first_frame
-        error_data.backtrace << second_frame
-        error_data.backtrace << third_frame
+        error_data.backtrace = Backtrace.example
 
         error_data
+      end
+
+      module Backtrace
+        def self.example
+          ::ErrorData::Backtrace.build.tap do |b|
+            b << Frames::First.example
+            b << Frames::Second.example
+            b << Frames::Third.example
+          end
+        end
+
+        module Frames
+          module First
+            def self.example
+              ::ErrorData::Backtrace::Frame.new.tap do |f|
+                f.line_number = Controls::Error::Backtrace::Frames::First.line_number
+                f.filename = Controls::Error::Backtrace::Frames::First.filename
+                f.method_name = Controls::Error::Backtrace::Frames::First.method_name
+              end
+            end
+          end
+
+          module Second
+            def self.example
+              ::ErrorData::Backtrace::Frame.new.tap do |f|
+                f.line_number = Controls::Error::Backtrace::Frames::Second.line_number
+                f.filename = Controls::Error::Backtrace::Frames::Second.filename
+                f.method_name = Controls::Error::Backtrace::Frames::Second.method_name
+              end
+            end
+          end
+
+          module Third
+            def self.example
+              ::ErrorData::Backtrace::Frame.new.tap do |f|
+                f.line_number = Controls::Error::Backtrace::Frames::Third.line_number
+                f.filename = Controls::Error::Backtrace::Frames::Third.filename
+                f.method_name = Controls::Error::Backtrace::Frames::Third.method_name
+              end
+            end
+          end
+        end
       end
 
       def self.data
