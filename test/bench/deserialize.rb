@@ -1,4 +1,4 @@
-require_relative 'spec_init'
+require_relative 'bench_init'
 
 context "Error Data Deserialization" do
   test "Converts from JSON text" do
