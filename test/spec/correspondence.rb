@@ -1,7 +1,7 @@
 require_relative 'spec_init'
 
 context "Error Data Correspondence with Error" do
-  test do
+  test "When attributes correspond" do
     error = ErrorData::Controls::Error.example
     error_data = ErrorData::Controls::ErrorData.example
 
