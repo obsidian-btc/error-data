@@ -6,24 +6,24 @@ class ErrorData
         error_data.class_name = Controls::Error.class_name
         error_data.message = Controls::Error.message
 
-        first_line = ::ErrorData::Backtrace::Line.new
-        first_line.line_number = Controls::Error::Backtrace::Lines::First.line_number
-        first_line.filename = Controls::Error::Backtrace::Lines::First.filename
-        first_line.method_name = Controls::Error::Backtrace::Lines::First.method_name
+        first_frame = ::ErrorData::Backtrace::Frame.new
+        first_frame.line_number = Controls::Error::Backtrace::Frames::First.line_number
+        first_frame.filename = Controls::Error::Backtrace::Frames::First.filename
+        first_frame.method_name = Controls::Error::Backtrace::Frames::First.method_name
 
-        second_line = ::ErrorData::Backtrace::Line.new
-        second_line.line_number = Controls::Error::Backtrace::Lines::Second.line_number
-        second_line.filename = Controls::Error::Backtrace::Lines::Second.filename
-        second_line.method_name = Controls::Error::Backtrace::Lines::Second.method_name
+        second_frame = ::ErrorData::Backtrace::Frame.new
+        second_frame.line_number = Controls::Error::Backtrace::Frames::Second.line_number
+        second_frame.filename = Controls::Error::Backtrace::Frames::Second.filename
+        second_frame.method_name = Controls::Error::Backtrace::Frames::Second.method_name
 
-        third_line = ::ErrorData::Backtrace::Line.new
-        third_line.line_number = Controls::Error::Backtrace::Lines::Third.line_number
-        third_line.filename = Controls::Error::Backtrace::Lines::Third.filename
-        third_line.method_name = Controls::Error::Backtrace::Lines::Third.method_name
+        third_frame = ::ErrorData::Backtrace::Frame.new
+        third_frame.line_number = Controls::Error::Backtrace::Frames::Third.line_number
+        third_frame.filename = Controls::Error::Backtrace::Frames::Third.filename
+        third_frame.method_name = Controls::Error::Backtrace::Frames::Third.method_name
 
-        error_data.backtrace << first_line
-        error_data.backtrace << second_line
-        error_data.backtrace << third_line
+        error_data.backtrace << first_frame
+        error_data.backtrace << second_frame
+        error_data.backtrace << third_frame
 
         error_data
       end
@@ -36,19 +36,19 @@ class ErrorData
 
         backtrace = [
           {
-            :line_number => Controls::Error::Backtrace::Lines::First.line_number,
-            :filename => Controls::Error::Backtrace::Lines::First.filename,
-            :method_name => Controls::Error::Backtrace::Lines::First.method_name
+            :line_number => Controls::Error::Backtrace::Frames::First.line_number,
+            :filename => Controls::Error::Backtrace::Frames::First.filename,
+            :method_name => Controls::Error::Backtrace::Frames::First.method_name
           },
           {
-            :line_number => Controls::Error::Backtrace::Lines::Second.line_number,
-            :filename => Controls::Error::Backtrace::Lines::Second.filename,
-            :method_name => Controls::Error::Backtrace::Lines::Second.method_name
+            :line_number => Controls::Error::Backtrace::Frames::Second.line_number,
+            :filename => Controls::Error::Backtrace::Frames::Second.filename,
+            :method_name => Controls::Error::Backtrace::Frames::Second.method_name
           },
           {
-            :line_number => Controls::Error::Backtrace::Lines::Third.line_number,
-            :filename => Controls::Error::Backtrace::Lines::Third.filename,
-            :method_name => Controls::Error::Backtrace::Lines::Third.method_name
+            :line_number => Controls::Error::Backtrace::Frames::Third.line_number,
+            :filename => Controls::Error::Backtrace::Frames::Third.filename,
+            :method_name => Controls::Error::Backtrace::Frames::Third.method_name
           }
         ]
 
@@ -73,19 +73,19 @@ class ErrorData
         module Backtrace
           def self.data
             [
-              Lines::First.data,
-              Lines::Second.data,
-              Lines::Third.data
+              Frames::First.data,
+              Frames::Second.data,
+              Frames::Third.data
             ]
           end
 
-          module Lines
+          module Frames
             module First
               def self.data
                 {
-                  'filename' => Controls::Error::Backtrace::Lines::First.filename,
-                  'lineNumber' => Controls::Error::Backtrace::Lines::First.line_number,
-                  'methodName' => Controls::Error::Backtrace::Lines::First.method_name
+                  'filename' => Controls::Error::Backtrace::Frames::First.filename,
+                  'lineNumber' => Controls::Error::Backtrace::Frames::First.line_number,
+                  'methodName' => Controls::Error::Backtrace::Frames::First.method_name
                 }
               end
             end
@@ -93,9 +93,9 @@ class ErrorData
             module Second
               def self.data
                 {
-                  'filename' => Controls::Error::Backtrace::Lines::Second.filename,
-                  'lineNumber' => Controls::Error::Backtrace::Lines::Second.line_number,
-                  'methodName' => Controls::Error::Backtrace::Lines::Second.method_name
+                  'filename' => Controls::Error::Backtrace::Frames::Second.filename,
+                  'lineNumber' => Controls::Error::Backtrace::Frames::Second.line_number,
+                  'methodName' => Controls::Error::Backtrace::Frames::Second.method_name
                 }
               end
             end
@@ -103,9 +103,9 @@ class ErrorData
             module Third
               def self.data
                 {
-                  'filename' => Controls::Error::Backtrace::Lines::Third.filename,
-                  'lineNumber' => Controls::Error::Backtrace::Lines::Third.line_number,
-                  'methodName' => Controls::Error::Backtrace::Lines::Third.method_name
+                  'filename' => Controls::Error::Backtrace::Frames::Third.filename,
+                  'lineNumber' => Controls::Error::Backtrace::Frames::Third.line_number,
+                  'methodName' => Controls::Error::Backtrace::Frames::Third.method_name
                 }
               end
             end

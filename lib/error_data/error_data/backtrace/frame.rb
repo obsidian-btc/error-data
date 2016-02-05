@@ -1,6 +1,6 @@
 class ErrorData
   class Backtrace
-    class Line
+    class Frame
       include Schema::DataStructure
 
       attribute :filename, String
@@ -11,14 +11,14 @@ class ErrorData
         "#{filename}:#{line_number}:in `#{method_name}'"
       end
 
-      def correspond?(backtrace_line)
-        to_s == backtrace_line
+      def correspond?(backtrace_text)
+        to_s == backtrace_text
       end
 
-      def self.parse(line)
+      def self.parse(frame_text)
         instance = build
 
-        instance.filename, instance.line_number, instance.method_name = line.split(":")
+        instance.filename, instance.line_number, instance.method_name = frame_text.split(":")
         instance.method_name = instance.method_name ? instance.method_name.gsub(/^in `(.*?)'$/, "\\1") : "(none)"
 
         instance

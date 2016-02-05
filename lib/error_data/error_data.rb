@@ -23,7 +23,7 @@ class ErrorData
     error_corresponds = class_name == error.class.name &&
       message == error.message
 
-    backtrace_corresponds = backtrace.string_frames == error.backtrace
+    backtrace_corresponds = backtrace.text_frames == error.backtrace
 
     error_corresponds && backtrace_corresponds
   end
