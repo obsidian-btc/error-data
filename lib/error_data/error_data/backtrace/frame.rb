@@ -18,8 +18,10 @@ class ErrorData
       def self.parse(frame_text)
         instance = build
 
-        instance.filename, instance.line_number, instance.method_name = frame_text.split(":")
-        instance.method_name = instance.method_name ? instance.method_name.gsub(/^in `(.*?)'$/, "\\1") : "(none)"
+        filename, line_number, method_name = frame_text.split(":")
+        instance.filename = filename
+        instance.line_number = line_number.to_i
+        instance.method_name = method_name ? method_name.gsub(/^in `(.*?)'$/, "\\1") : "(none)"
 
         instance
       end

@@ -10,8 +10,10 @@ class ErrorData
   end
 
   def self.build(data=nil)
+    backtrace = data.delete :backtrace if data
+
     instance = super
-    instance.backtrace = Backtrace.build(instance.backtrace)
+    instance.backtrace = Backtrace.build(backtrace) if backtrace
     instance
   end
 
@@ -58,7 +60,7 @@ class ErrorData
 
     module JSON
       def self.deserialize(text)
-        formatted_data = ::JSON.parse(text)
+        formatted_data = ::JSON.parse(text, symbolize_names: true)
         Casing::Underscore.(formatted_data)
       end
 
