@@ -6,7 +6,7 @@ if [ -z ${LIBRARIES_HOME+x} ]; then
 fi
 
 if [ ! -d "$LIBRARIES_HOME" ]; then
-  echo "$LIBRARIES_HOME does not exit... exiting"
+  echo "$LIBRARIES_HOME does not exist... exiting"
   exit 1
 fi
 
@@ -49,7 +49,7 @@ function symlink_lib {
 
   remove_lib_symlinks $name $directory
 
-  src="$(PWD)/lib"
+  src="$(pwd)/lib"
   dest="$LIBRARIES_HOME"
   if [ ! -z "$directory" ]; then
     src="$src/$directory"
