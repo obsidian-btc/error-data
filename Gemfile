@@ -1,13 +1,22 @@
 source 'https://rubygems.org'
 
-gem 'error_data', path: '.'
-
 source 'https://gem.fury.io/eventide' do
   gem 'schema'
   gem 'casing'
+
+  gem 'attribute'
+  gem 'clock'
+  gem 'configure'
+  gem 'log'
+  gem 'initializer'
+  gem 'serialize'
+  gem 'settings'
+  gem 'telemetry'
+  gem 'validate'
 end
 
 group :development do
   gem 'test_bench'
-  gem 'serialize', :source => 'https://gem.fury.io/eventide'
+  gem 'pry'
+  gem 'pry-doc'
 end

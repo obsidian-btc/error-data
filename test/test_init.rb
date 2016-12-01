@@ -1,19 +1,13 @@
 ENV['CONSOLE_DEVICE'] ||= 'stdout'
-ENV['LOG_COLOR'] ||= 'on'
+ENV['LOG_LEVEL'] ||= '_min'
 
-if ENV['LOG_LEVEL']
-  ENV['LOGGER'] ||= 'on'
-else
-  ENV['LOG_LEVEL'] ||= 'trace'
-end
-
-ENV['LOGGER'] ||= 'off'
-
-puts RUBY_DESCRIPTION
+ENV['ENTITY_CACHE_SCOPE'] ||= 'exclusive'
 
 require_relative '../init.rb'
 
 require 'error_data/controls'
 require 'serialize'
 
-Telemetry::Logger::AdHoc.activate
+require 'pp'
+
+Controls = ErrorData::Controls
