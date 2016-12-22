@@ -6,8 +6,8 @@ ENV['ENTITY_CACHE_SCOPE'] ||= 'exclusive'
 require_relative '../init.rb'
 
 require 'error_data/controls'
-require 'serialize'
 
 require 'pp'
+require 'transform'
 
 Controls = ErrorData::Controls

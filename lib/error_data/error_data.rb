@@ -33,8 +33,8 @@ class ErrorData
   def ==(other)
     return false if self.class != other.class
 
-    this_hash = Serialize::Write.raw_data self
-    other_hash = Serialize::Write.raw_data other
+    this_hash = Transform::Write.raw_data self
+    other_hash = Transform::Write.raw_data other
 
     this_hash == other_hash
   end
@@ -43,31 +43,5 @@ class ErrorData
     data = attributes
     data[:backtrace] = backtrace.to_a
     data
-  end
-
-  module Serializer
-    def self.json
-      JSON
-    end
-
-    def self.instance(raw_data)
-      ErrorData.build(raw_data)
-    end
-
-    def self.raw_data(instance)
-      instance.to_h
-    end
-
-    module JSON
-      def self.deserialize(text)
-        formatted_data = ::JSON.parse(text, symbolize_names: true)
-        Casing::Underscore.(formatted_data)
-      end
-
-      def self.serialize(raw_data)
-        formatted_data = Casing::Camel.(raw_data)
-        ::JSON.generate(formatted_data)
-      end
-    end
   end
 end

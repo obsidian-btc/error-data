@@ -5,7 +5,7 @@ context "Error Data Serialization" do
     control_json_text = Controls::ErrorData::JSON.text
 
     error_data = Controls::ErrorData.example
-    json_text = Serialize::Write.(error_data, :json)
+    json_text = Transform::Write.(error_data, :json)
 
     assert(json_text == control_json_text)
   end
