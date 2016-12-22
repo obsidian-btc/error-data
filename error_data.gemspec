@@ -17,5 +17,4 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'evt-schema'
   s.add_runtime_dependency 'evt-casing'
-  s.add_runtime_dependency 'evt-transform'
 end
